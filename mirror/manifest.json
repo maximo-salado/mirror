@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Mirror",
+  "version": "0.1.0",
+  "description": "See how you interact with AI. Local-only awareness overlay for ChatGPT.",
+  "permissions": ["storage"],
+  "host_permissions": [],
+  "content_scripts": [{
+    "matches": ["https://chatgpt.com/*"],
+    "js": ["storage.js", "content.js"],
+    "css": ["content.css"],
+    "run_at": "document_idle"
+  }],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Mirror"
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

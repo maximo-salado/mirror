@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mirror</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 280px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 13px;
+      color: #e0e0e0;
+      background: #1a1a1a;
+      padding: 16px;
+    }
+    h1 {
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      color: #f0a030;
+    }
+    .dot { font-size: 10px; }
+    .section {
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .section:last-of-type { border-bottom: none; margin-bottom: 0; }
+    .section-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #808080;
+      margin-bottom: 8px;
+    }
+
+    /* Toggle */
+    .toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+    }
+    .toggle-switch {
+      position: relative;
+      width: 36px;
+      height: 20px;
+      background: #333;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .toggle-switch.active { background: #f0a030; }
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background: #e0e0e0;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+    .toggle-switch.active::after { transform: translateX(16px); }
+
+    /* Stats */
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 3px 0;
+      font-size: 12px;
+    }
+    .stat-label { color: #808080; }
+    .stat-value { font-weight: 500; }
+
+    /* Button */
+    .btn {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      color: #e0e0e0;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: rgba(255,255,255,0.1); }
+    .btn-danger:hover { background: rgba(200, 60, 60, 0.2); border-color: rgba(200,60,60,0.3); }
+
+    /* Privacy notice */
+    .privacy {
+      font-size: 10px;
+      color: #606060;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+    .privacy ul { list-style: none; padding: 0; }
+    .privacy li::before { content: '✓ '; color: #4a4; }
+
+    .no-data {
+      color: #606060;
+      font-size: 11px;
+      text-align: center;
+      padding: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1><span class="dot">●</span> Mirror</h1>
+
+  <div class="section">
+    <div class="section-title">Controls</div>
+    <div class="toggle-row">
+      <span>Extension enabled</span>
+      <div class="toggle-switch active" id="toggle-enabled" role="button" tabindex="0"></div>
+    </div>
+    <div class="toggle-row">
+      <span>Show badge</span>
+      <div class="toggle-switch active" id="toggle-badge" role="button" tabindex="0"></div>
+    </div>
+    <div class="toggle-row">
+      <span>Alerts</span>
+      <div class="toggle-switch active" id="toggle-alerts" role="button" tabindex="0"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Today</div>
+    <div id="today-stats">
+      <div class="no-data">No sessions yet today</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <button class="btn btn-danger" id="btn-clear">Clear all data</button>
+    <div class="privacy">
+      <ul>
+        <li>Runs entirely in your browser</li>
+        <li>No data ever leaves this machine</li>
+        <li>No accounts, no servers, no telemetry</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

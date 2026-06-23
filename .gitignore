@@ -1,0 +1,13 @@
+# Saved reference pages (DOM snapshots for development)
+project-references/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
